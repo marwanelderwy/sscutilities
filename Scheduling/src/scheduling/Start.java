@@ -4,6 +4,7 @@
 package scheduling;
 
 import scheduling.GUI.forms.Login;
+import scheduling.exec.PerformLogin;
 
 
 /**
@@ -16,8 +17,7 @@ public class Start {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Login login = new Login();
-		login.showFrame();
+		new PerformLogin();
 	}
 
 }

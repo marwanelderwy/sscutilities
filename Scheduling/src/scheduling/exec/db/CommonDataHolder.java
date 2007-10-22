@@ -24,6 +24,7 @@ public class CommonDataHolder {
 	private String firstName;
 	private String middelName;
 	private String lastName;
+	private Access userAccess;
 	
 	/*
 	 * Global variables

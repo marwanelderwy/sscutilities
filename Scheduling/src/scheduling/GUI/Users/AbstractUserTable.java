@@ -15,7 +15,7 @@ public class AbstractUserTable extends AbstractTableModel {
 	
 	Object[][] data = null;
 	int rows = 0, cols = 0;
-	String[] colNames = null; 
+	String[] colNames = {"UID","Navn", "Stilling", "adgangsniveau"}; 
 	
 	public AbstractUserTable(){
 		
@@ -41,10 +41,7 @@ public class AbstractUserTable extends AbstractTableModel {
 	}
 	
 	public boolean isCellEditable(int row, int col){
-		if(col<3){
-			return false;
-		}
-		return true;
+		return false;
 	}
 	
 	public void setValueAt(Object val,

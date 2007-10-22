@@ -33,15 +33,21 @@ public class PersonalInfo extends JPanel{
 	private JLabel txt2;
 	private JButton cmdCancel;
 	private JButton cmdEnter;
+	private JTextField component28;
+	private JLabel lblPosition;
+	private JLabel lbl;
+	private JComboBox cmbAccess;
 
 	public PersonalInfo()
 	{
+		//construct preComponents
+		String[] cmbAccessItems = {"Item 1", "Item 2", "Item 3"};
+
 		//construct components
-		txtTitle = new JLabel ("Personlige Oplysninger");
-		txtTitle.setFont(new Font("Verdana", 0, 20));
-		lblFirstName = new JLabel ("Fornavn:");
+		txtTitle = new JLabel ("Personlige Informationer");
+		lblFirstName = new JLabel ("Fornavn*:");
 		lblMidName = new JLabel ("Mellemnavn:");
-		lblLastName = new JLabel ("Efternavn:");
+		lblLastName = new JLabel ("Efternavn*:");
 		txtFirstName = new JTextField (5);
 		txtMidName = new JTextField (5);
 		txtLastName = new JTextField (5);
@@ -65,10 +71,13 @@ public class PersonalInfo extends JPanel{
 		txt2 = new JLabel (" -");
 		cmdCancel = new JButton ("Cancel");
 		cmdEnter = new JButton ("Enter");
-
+		component28 = new JTextField (5);
+		lblPosition = new JLabel ("Stilling:");
+		lbl = new JLabel ("Access*:");
+		cmbAccess = new JComboBox (cmbAccessItems);
 
 		//adjust size and set layout
-		setPreferredSize (new Dimension (483, 507));
+		setPreferredSize (new Dimension (509, 565));
 		setLayout (null);
 
 		//add components
@@ -99,9 +108,13 @@ public class PersonalInfo extends JPanel{
 		add (txt2);
 		add (cmdCancel);
 		add (cmdEnter);
+		add (component28);
+		add (lblPosition);
+		add (lbl);
+		add (cmbAccess);
 
 		//set component bounds (only needed by Absolute Positioning)
-		txtTitle.setBounds (130, 15, 250, 25);
+		txtTitle.setBounds (165, 15, 150, 25);
 		lblFirstName.setBounds (100, 65, 100, 25);
 		lblMidName.setBounds (100, 100, 100, 25);
 		lblLastName.setBounds (100, 135, 100, 25);
@@ -126,8 +139,12 @@ public class PersonalInfo extends JPanel{
 		txtYear.setBounds (250, 170, 40, 25);
 		txt1.setBounds (210, 170, 10, 25);
 		txt2.setBounds (240, 170, 10, 25);
-		cmdCancel.setBounds (230, 450, 100, 25);
-		cmdEnter.setBounds (355, 450, 100, 25);
+		cmdCancel.setBounds (215, 500, 100, 25);
+		cmdEnter.setBounds (355, 500, 100, 25);
+		component28.setBounds (190, 425, 126, 25);
+		lblPosition.setBounds (100, 425, 100, 25);
+		lbl.setBounds (100, 460, 100, 25);
+		cmbAccess.setBounds (190, 460, 124, 25);
 	}
 	
 	public JFrame getFrame(){
