@@ -43,8 +43,8 @@ public class Database {
 		}
 		catch(Exception e)
 		{
-			JOptionPane.showMessageDialog(null, "Error connecting to database :" +
-					e.getMessage() , "ERROR" , JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Fejl i brugernavn eller password."
+					, "ERROR" , JOptionPane.ERROR_MESSAGE);
 		}
 		return con;
 	}

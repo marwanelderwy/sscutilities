@@ -18,13 +18,12 @@ public class Login extends JPanel
 	private JPasswordField txtPassword;
 	private JButton cmdExit;
 	private JButton cmdEnter;
-	private JFrame frame;
+	private PerformLogin execLogin;
 	
 
-	public Login()
+	public Login(PerformLogin execLogin)
 	{
-		frame = new JFrame ("JPanel Preview");
-		
+		this.execLogin = execLogin;
 		//construct components
 		lblUsername = new JLabel ("Username");
 		lblPassword = new JLabel ("Password");
@@ -59,37 +58,17 @@ public class Login extends JPanel
 		cmdExit.setBounds (90, 140, 100, 25);
 		cmdEnter.setBounds (200, 140, 100, 25);
 	}
-
-	public void showFrame(){
-		
-		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add (new Login());
-		frame.setResizable(false);
-		frame.pack();
-		frame.setVisible(true);
-	}
 	
-	
-	public static void main (String[] args)
-	{
-		JFrame frame = new JFrame ("JPanel Preview");
-		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add (new Login());
-		frame.pack();
-		frame.setResizable(false);
-		frame.setVisible (true);
-	}
 	
 	public class ButtonClicked implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
 			String command = e.getActionCommand();
-			PerformLogin execLogin;
+			
 			if(command.equals("Exit")){
 				System.exit(0);
 			}
 			else if(command.equals("Enter")){
-				execLogin = new PerformLogin();
 				
 				String password = "";
 				for(char c : txtPassword.getPassword()){
