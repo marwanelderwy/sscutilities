@@ -66,7 +66,13 @@ public class Login extends JPanel
 			String command = e.getActionCommand();
 			
 			if(command.equals("Exit")){
-				System.exit(0);
+				if(execLogin.getLoginType() == 0){
+					System.exit(0);
+				}
+				else if(execLogin.getLoginType() == 1){
+					//TODO close login window and return to last window
+				}
+				
 			}
 			else if(command.equals("Enter")){
 				
@@ -76,8 +82,15 @@ public class Login extends JPanel
 				}
 				
 				if(execLogin.validateUser(txtUsername.getText(), password)){
-					System.out.println("Login Successfull");
-					
+					if(execLogin.getLoginType() == 0){
+						execLogin.runInitialize();
+					}
+					else if(execLogin.getLoginType() == 1){
+						execLogin.hideLogin();
+					}
+					else{
+						System.out.println("no execLogin has been defined for this type");
+					}
 				}				
 				else{
 					txtPassword.setText("");

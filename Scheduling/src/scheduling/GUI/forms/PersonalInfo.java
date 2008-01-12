@@ -1,7 +1,12 @@
 package scheduling.GUI.forms;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import scheduling.exec.UserManagement;
 
 public class PersonalInfo extends JPanel{
 	
@@ -16,15 +21,15 @@ public class PersonalInfo extends JPanel{
 	private JLabel lblAddress;
 	private JLabel lblCity;
 	private JLabel lblZipCode;
-	private JTextField component11;
-	private JTextField component12;
-	private JTextField component13;
+	private JTextField txtStreet;
+	private JTextField txtCity;
+	private JTextField txtZip;
 	private JLabel lblTel;
 	private JLabel lblMob;
 	private JTextField txtTel;
 	private JTextField txtMob;
 	private JLabel lblEmail;
-	private JTextField component19;
+	private JTextField txtEmail;
 	private JLabel lblBirth;
 	private JTextField txtDay;
 	private JTextField txtMonth;
@@ -33,13 +38,21 @@ public class PersonalInfo extends JPanel{
 	private JLabel txt2;
 	private JButton cmdCancel;
 	private JButton cmdEnter;
-	private JTextField component28;
+	private JTextField txtPosition;
 	private JLabel lblPosition;
-	private JLabel lbl;
+	private JLabel lblAccess;
 	private JComboBox cmbAccess;
+	private JLabel lblUsername;
+	private JTextField txtUsername;
+	private JLabel lblHouseno;
+	private JTextField txtHouseno;
+	
+	private String formType = null;
 
-	public PersonalInfo()
+	public PersonalInfo(String formType)
 	{
+		this.formType = formType;
+		
 		//construct preComponents
 		String[] cmbAccessItems = {"Item 1", "Item 2", "Item 3"};
 
@@ -54,15 +67,15 @@ public class PersonalInfo extends JPanel{
 		lblAddress = new JLabel ("Vejnavn:");
 		lblCity = new JLabel ("By:");
 		lblZipCode = new JLabel ("Postnr:");
-		component11 = new JTextField (5);
-		component12 = new JTextField (5);
-		component13 = new JTextField (5);
+		txtStreet = new JTextField (5);
+		txtCity = new JTextField (5);
+		txtZip = new JTextField (5);
 		lblTel = new JLabel ("Hjemmetelefon:");
 		lblMob = new JLabel ("Mobiltelefon:");
 		txtTel = new JTextField (5);
 		txtMob = new JTextField (5);
 		lblEmail = new JLabel ("E-mail:");
-		component19 = new JTextField (5);
+		txtEmail = new JTextField (5);
 		lblBirth = new JLabel ("Fødselsdato:");
 		txtDay = new JTextField (5);
 		txtMonth = new JTextField (5);
@@ -71,14 +84,30 @@ public class PersonalInfo extends JPanel{
 		txt2 = new JLabel (" -");
 		cmdCancel = new JButton ("Cancel");
 		cmdEnter = new JButton ("Enter");
-		component28 = new JTextField (5);
+		txtPosition = new JTextField (5);
 		lblPosition = new JLabel ("Stilling:");
-		lbl = new JLabel ("Access*:");
+		lblAccess = new JLabel ("Access*:");
 		cmbAccess = new JComboBox (cmbAccessItems);
+		lblUsername = new JLabel ("Username:");
+		txtUsername = new JTextField (5);
+		lblHouseno = new JLabel ("Husnummer:");
+		txtHouseno = new JTextField (5);
+
 
 		//adjust size and set layout
-		setPreferredSize (new Dimension (509, 565));
+		setPreferredSize (new Dimension (741, 466));
 		setLayout (null);
+		
+		//adding ActionListeners
+		ActionListener al = null;
+		if(formType.equals("NewUser")){
+			al = new NewUserType();
+		}
+		else if(formType.equals("EditUser")){
+			al = new EditUserType();
+		}
+		cmdEnter.addActionListener(al);
+		cmdCancel.addActionListener(al);
 
 		//add components
 		add (txtTitle);
@@ -91,15 +120,15 @@ public class PersonalInfo extends JPanel{
 		add (lblAddress);
 		add (lblCity);
 		add (lblZipCode);
-		add (component11);
-		add (component12);
-		add (component13);
+		add (txtStreet);
+		add (txtCity);
+		add (txtZip);
 		add (lblTel);
 		add (lblMob);
 		add (txtTel);
 		add (txtMob);
 		add (lblEmail);
-		add (component19);
+		add (txtEmail);
 		add (lblBirth);
 		add (txtDay);
 		add (txtMonth);
@@ -108,62 +137,104 @@ public class PersonalInfo extends JPanel{
 		add (txt2);
 		add (cmdCancel);
 		add (cmdEnter);
-		add (component28);
+		add (txtPosition);
 		add (lblPosition);
-		add (lbl);
+		add (lblAccess);
 		add (cmbAccess);
+		add (lblUsername);
+		add (txtUsername);
+		add (lblHouseno);
+		add (txtHouseno);
 
 		//set component bounds (only needed by Absolute Positioning)
-		txtTitle.setBounds (165, 15, 150, 25);
+		txtTitle.setBounds (285, 15, 150, 25);
 		lblFirstName.setBounds (100, 65, 100, 25);
 		lblMidName.setBounds (100, 100, 100, 25);
 		lblLastName.setBounds (100, 135, 100, 25);
 		txtFirstName.setBounds (190, 65, 100, 25);
 		txtMidName.setBounds (190, 100, 100, 25);
 		txtLastName.setBounds (190, 135, 100, 25);
-		lblAddress.setBounds (100, 215, 100, 25);
-		lblCity.setBounds (100, 250, 100, 25);
-		lblZipCode.setBounds (100, 285, 100, 25);
-		component11.setBounds (190, 215, 150, 25);
-		component12.setBounds (190, 250, 150, 25);
-		component13.setBounds (190, 285, 75, 25);
-		lblTel.setBounds (100, 320, 100, 25);
-		lblMob.setBounds (100, 355, 100, 25);
-		txtTel.setBounds (215, 320, 100, 25);
-		txtMob.setBounds (215, 355, 100, 25);
-		lblEmail.setBounds (100, 390, 100, 25);
-		component19.setBounds (190, 390, 200, 25);
+		lblAddress.setBounds (100, 250, 100, 25);
+		lblCity.setBounds (100, 320, 100, 25);
+		lblZipCode.setBounds (100, 355, 100, 25);
+		txtStreet.setBounds (190, 250, 150, 25);
+		txtCity.setBounds (190, 320, 150, 25);
+		txtZip.setBounds (190, 355, 75, 25);
+		lblTel.setBounds (385, 285, 100, 25);
+		lblMob.setBounds (385, 320, 100, 25);
+		txtTel.setBounds (495, 285, 100, 25);
+		txtMob.setBounds (495, 320, 100, 25);
+		lblEmail.setBounds (385, 250, 100, 25);
+		txtEmail.setBounds (465, 250, 200, 25);
 		lblBirth.setBounds (100, 170, 100, 25);
 		txtDay.setBounds (190, 170, 20, 25);
 		txtMonth.setBounds (220, 170, 20, 25);
 		txtYear.setBounds (250, 170, 40, 25);
 		txt1.setBounds (210, 170, 10, 25);
 		txt2.setBounds (240, 170, 10, 25);
-		cmdCancel.setBounds (215, 500, 100, 25);
-		cmdEnter.setBounds (355, 500, 100, 25);
-		component28.setBounds (190, 425, 126, 25);
-		lblPosition.setBounds (100, 425, 100, 25);
-		lbl.setBounds (100, 460, 100, 25);
-		cmbAccess.setBounds (190, 460, 124, 25);
+		cmdCancel.setBounds (455, 405, 100, 25);
+		cmdEnter.setBounds (570, 405, 100, 25);
+		txtPosition.setBounds (465, 65, 126, 25);
+		lblPosition.setBounds (385, 65, 100, 25);
+		lblAccess.setBounds (385, 100, 100, 25);
+		cmbAccess.setBounds (465, 100, 124, 25);
+		lblUsername.setBounds (385, 135, 100, 25);
+		txtUsername.setBounds (465, 135, 126, 25);
+		lblHouseno.setBounds (100, 285, 100, 25);
+		txtHouseno.setBounds (190, 285, 40, 25);
 	}
 	
-	public JFrame getFrame(){
-		JFrame frame = new JFrame ("Indtast Personlige Oplysninger");
-		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add (new PersonalInfo());
-		frame.setResizable(false);
-		frame.pack();
+	/*
+	 * ActionListener to be loaded for creating new user
+	 * in the database.
+	 */
+	class NewUserType implements ActionListener{
+
+		public void actionPerformed(ActionEvent ae) {
+			
+			String command = ae.getActionCommand();
+			
+			if(command.equals("Enter")){
+				
+			}
+			else if(command.equals("Cancel")){
+				
+			}
+			
+		}
 		
-		return frame;
+	}
+	
+	/*
+	 * ActionListener to be loaded for editing user
+	 * in the database.
+	 */
+	class EditUserType implements ActionListener{
+
+		public void actionPerformed(ActionEvent ae) {
+			
+			String command = ae.getActionCommand();
+			
+			if(command.equals("Enter")){
+				int birthday = new Integer(txtDay.getText()).intValue();
+				int birthmonth = new Integer(txtMonth.getText()).intValue();
+				int birthyear = new Integer(txtYear.getText()).intValue();
+				int access = cmbAccess.getSelectedIndex();
+				int zip = new Integer(txtZip.getText()).intValue();
+				
+				UserManagement um = new UserManagement();
+				um.AddNewUser(txtUsername.getText(), access, txtFirstName.getText(), txtMidName.getText(),
+						txtLastName.getText(), txtStreet.getText(),
+						txtHouseno.getText(), zip, txtCity.getText(), 
+						txtTel.getText(), txtMob.getText(),
+						birthday, birthmonth, birthyear, txtPosition.getText(), txtPosition.getText());
+			}
+			else if(command.equals("Cancel")){
+				
+			}
+			
+		}
+		
 	}
 
-	public static void main (String[] args)
-	{
-		JFrame frame = new JFrame ("JPanel Preview");
-		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add (new PersonalInfo());
-		frame.pack();
-		frame.setResizable(false);
-		frame.setVisible (true);
-	}
 }

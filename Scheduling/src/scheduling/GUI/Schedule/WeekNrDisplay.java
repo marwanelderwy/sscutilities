@@ -30,19 +30,19 @@ public class WeekNrDisplay extends JPanel{
 			lblWeek = new JLabel("Uge 39");
 			lblWeek.setFont(new Font("Verdana",0,20));
 			
-			JButton prev = new JButton(new ImageIcon("OOo/res/lc10616.png"));
+			JButton prev = new JButton(new ImageIcon("Icons/lc10616.png"));
 			prev.setFocusPainted(false);
-			prev.setRolloverIcon(new ImageIcon("OOo/res/lc10616over.png"));
-			prev.setPressedIcon(new ImageIcon("OOo/res/lc10616over.png"));
+			prev.setRolloverIcon(new ImageIcon("Icons/lc10616over.png"));
+			prev.setPressedIcon(new ImageIcon("Icons/lc10616over.png"));
 			prev.setRolloverEnabled(true);
 			prev.setBorderPainted(false);
 			prev.setContentAreaFilled(false);
 			prev.addActionListener(new changeWeek());
 			
-			JButton next = new JButton(new ImageIcon("OOo/res/lc10619.png"));
+			JButton next = new JButton(new ImageIcon("Icons/lc10619.png"));
 			next.setFocusPainted(false);
-			next.setRolloverIcon(new ImageIcon("OOo/res/lc10619over.png"));
-		    next.setPressedIcon(new ImageIcon("OOo/res/lc10619over.png"));
+			next.setRolloverIcon(new ImageIcon("Icons/lc10619over.png"));
+		    next.setPressedIcon(new ImageIcon("Icons/lc10619over.png"));
 			next.setRolloverEnabled(true);
 		    next.setBorderPainted(false);
 		    next.setContentAreaFilled(false);
