@@ -15,7 +15,7 @@ public class AbstractUserTable extends AbstractTableModel {
 	
 	Object[][] data = null;
 	int rows = 0, cols = 0;
-	String[] colNames = {"UID","Navn", "Stilling", "adgangsniveau"}; 
+	String[] colNames = {"UID","Name", "Position", "Access level"}; 
 	
 	public AbstractUserTable(){
 		

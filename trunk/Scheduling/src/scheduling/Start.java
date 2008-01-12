@@ -17,7 +17,7 @@ public class Start {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new PerformLogin();
+		new PerformLogin(0);
 	}
 
 }

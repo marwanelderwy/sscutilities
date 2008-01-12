@@ -2,6 +2,7 @@ package scheduling;
 
 import javax.swing.JFrame;
 
+import scheduling.GUI.MainFrame.MainFrame;
 import scheduling.GUI.Schedule.TitleBar;
 import scheduling.GUI.Schedule.WeekNrDisplay;
 import scheduling.GUI.Schedule.displaySchedule;
@@ -18,15 +19,15 @@ public class tester {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		ShowUsers su = new ShowUsers();
-//		JFrame frame = new JFrame();
-//		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().add (new Login());
-//		//frame.setResizable(false);
-//		frame.pack();
-//		frame.setVisible(true);
+		ShowUsers su = new ShowUsers();
+		JFrame frame = new JFrame();
+		frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add (new MainFrame());
+		//frame.setResizable(false);
+		frame.pack();
+		frame.setVisible(true);
 		
-		new PerformLogin();
+		//new PerformLogin(0);
 
 	}
 
