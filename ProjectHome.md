@@ -1,0 +1,1 @@
+utilities for smaller companies wishing to use IT to execute administrative tasks (scheduling, employee managment, revenue reporting)
